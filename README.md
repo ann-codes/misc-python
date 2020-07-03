@@ -1,2 +1,2 @@
-# Notes and etc on Python & ML 
+# Notes on Learning Python & ML 
 
