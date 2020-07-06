@@ -12,19 +12,52 @@ slice = list[4:-1]
 # starting index: index up to but not including
 print(slice) #['e', 'f']
 
+# can reassign by index or slice index
+list[0] = "1"
+list[3:4] = ["HELLO", "WORLD"]
+print(list) ## ['1', 'b', 'c', 'HELLO', 'WORLD', 'e', 'f', 'g']
+# delete by using del
+del list[-1]
+print(list) ## ['1', 'b', 'c', 'HELLO', 'WORLD', 'e', 'f']
+
+# can do list concat with +, or replication with *
+print([1,2,3]+[4,5,6])
+print([1,2,3]*3)
+
+# boolean to check value in list
 bool1 = "e" in list
 bool2 = "x" in list
+bool3 = "z" not in list
 print(bool1) #True
 print(bool2) #False
+print(bool3) #True
 
 # List Methods
-print(len(list))
+print("LIST METHODS ==========================", len(list))
 join1 = "###".join(list)
 print(join1)
 print(max(list))
 print(min(list))
 print(sorted(list, reverse=True))
+print("index of 'e' = ", list.index("e")) 
+# .list() will return first of any dupe; if doesn't exist, will get exception
+print(list) ## ['1', 'b', 'c', 'HELLO', 'WORLD', 'e', 'f']
+list.append("Z") ## adds to the end; ['1', 'b', 'c', 'HELLO', 'WORLD', 'e', 'f', 'Z']
+list.insert(1, "WHAT") ## adds to specific index, doesnt replace
+list.remove("HELLO") 
+# append and insert is only for list
+print(list) ## ['1', 'WHAT', 'b', 'c', 'WORLD', 'e', 'f', 'Z']
+# append and insert is only for list
+list.sort() ## sorts based on ASCII (upper case will come before lowercase)
+print(list) ##['1', 'WHAT', 'WORLD', 'Z', 'b', 'c', 'e', 'f']
+list.sort(reverse=True) ## reverse sort
+# note: can't sort a mixed list of types, will throw exception
+print(list)
+list.sort(key=str.lower) # this is true sort
+print(list)
 
+
+print("TUPLES ==========================")
 # Tuples: immutable, ordered data structure that can be indexed and sliced like a list, defined by listing a sequence of elements separated by commas, optionally contained within parentheses: ().
 tuple1 = ("t1", "t2") #call by index similar to list
 # compact way to assign
@@ -107,13 +140,13 @@ winners = {1931: ['Norman Taurog'], 1932: ['Frank Borzage'], 1933: ['Frank Lloyd
 most_win_director = []
 win_count_dict = {}
 
-# Part 1 mine
-for winners in winners.values():
-    for name in winners: 
-        if name not in win_count_dict: 
-            win_count_dict[name] = 1
-        else:
-            win_count_dict[name] += 1
+# # Part 1 mine
+# for winners in winners.values():
+#     for name in winners: 
+#         if name not in win_count_dict: 
+#             win_count_dict[name] = 1
+#         else:
+#             win_count_dict[name] += 1
 
 # Part 1 theirs NOTE use of get() method
 for year, winnerlist in winners.items():

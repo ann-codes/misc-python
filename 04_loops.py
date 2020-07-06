@@ -15,6 +15,8 @@ for n in range(5, 31, 5):
 
 
 letters = ["a", "b", "c", "d", "e"]
+
+## using the "i" to get index using range
 for idx in range(len(letters)):
   letters[idx] = letters[idx].title()
 print(letters)
