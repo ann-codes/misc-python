@@ -1,8 +1,9 @@
 import math
 import matplotlib.pyplot as plt
+from GenDistribution import Distribution
 
-
-class Gaussian():
+# Using inheritance
+class Gaussian(Distribution):
     """ Gaussian distribution class for calculating and 
     visualizing a Gaussian distribution.
 
@@ -12,10 +13,13 @@ class Gaussian():
         data_list (list of floats) a list of floats extracted from the data file
     """
 
+    # def __init__(self, mu=0, sigma=1):
+    #     self.mean = mu
+    #     self.stdev = sigma
+    #     self.data = []
+
     def __init__(self, mu=0, sigma=1):
-        self.mean = mu
-        self.stdev = sigma
-        self.data = []
+        Distribution.__init__(self, mu, sigma)
 
     def calculate_mean(self):
         """Method to calculate the mean of the data set.
@@ -90,7 +94,14 @@ class Gaussian():
         return (1.0 / (self.stdev * math.sqrt(2*math.pi))) * math.exp(-0.5 * ((x - self.mean) / self.stdev) ** 2)
 
     def plot_histogram_pdf(self, n_spaces=50):
-
+        """Function to plot the normalized histogram of the data and a plot of the 
+        probability density function along the same range
+        Args:
+            n_spaces (int): number of data points 
+        Returns:
+            list: x values for the pdf plot
+            list: y values for the pdf plot    
+        """
         min_range = min(self.data)
         max_range = max(self.data)
 
@@ -142,3 +153,4 @@ class Gaussian():
             string: characteristics of the Gaussian        
         """
         return "mean {}, standard deviation {}".format(self.mean, self.stdev)
+
